@@ -1,0 +1,5 @@
+"use client";
+import Link from "next/link";
+import {usePathname} from "next/navigation";
+import {adminNav} from "@/lib/admin-nav";
+export default function AdminShell({children}:{children:React.ReactNode}){const pathname=usePathname();return <div className="min-h-screen md:flex"><aside className="w-full border-b bg-white p-5 md:min-h-screen md:w-64 md:border-b-0 md:border-r"><p className="text-xs font-bold uppercase tracking-widest text-emerald-700">DevBhoomi</p><h1 className="mb-5 text-lg font-bold">Himalayan Horizons</h1><nav className="flex flex-wrap gap-2 md:flex-col">{adminNav.map(item=><Link key={item.href} href={item.href} className={`rounded-lg px-3 py-2 text-sm ${pathname===item.href?"bg-emerald-50 font-semibold text-emerald-800":"text-slate-600 hover:bg-slate-50"}`}>{item.label}</Link>)}</nav></aside><main className="min-w-0 flex-1 p-5 md:p-8">{children}</main></div>}
