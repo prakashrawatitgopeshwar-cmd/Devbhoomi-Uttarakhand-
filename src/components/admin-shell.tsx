@@ -4,11 +4,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   Mountain, LayoutDashboard, PanelsTopLeft, Map, MapPin, Hotel, Package,
-  CalendarCheck, Users, MessageSquare, Settings, ClipboardList, ShieldCheck, Car, Route, LifeBuoy, Tags, Menu,
+  CalendarCheck, Users, MessageSquare, Settings, ClipboardList, ShieldCheck, Car, Route, LifeBuoy, Tags, Menu, UserCog,
 } from "lucide-react";
 
 const nav = [
   ["Overview", "/admin", LayoutDashboard],
+  ["Team & Employees", "/admin/team", UserCog],
   ["Homepage Builder", "/admin/site-builder", PanelsTopLeft],
   ["Districts", "/admin/districts", Map],
   ["Destinations", "/admin/destinations", MapPin],
@@ -37,6 +38,6 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
       <nav className="grid grid-cols-2 gap-1 md:grid-cols-1">{nav.map(([label, href, Icon]) => {const active=pathname===href;return <Link key={href} href={href} className={"flex items-center gap-2 rounded-lg px-3 py-2.5 text-xs transition "+(active?"bg-white font-semibold text-[#173e35]":"text-emerald-50 hover:bg-white/10")}><Icon size={15}/>{label}</Link>})}</nav>
       <form action="/admin/logout" method="post" className="mt-5"><button className="w-full rounded-xl border border-white/20 px-3 py-2.5 text-sm hover:bg-white/10">Sign out securely</button></form>
     </aside>
-    <section className="min-w-0 flex-1"><header className="sticky top-0 z-10 flex items-center justify-between border-b bg-white/95 px-5 py-4 backdrop-blur md:px-8"><div><p className="text-xs text-slate-500">DevBhoomi / Operations</p><p className="text-sm font-semibold text-slate-800">{nav.find((item)=>item[1]===pathname)?.[0] ?? "Admin workspace"}</p></div><span className="rounded-full bg-emerald-50 px-3 py-1.5 text-xs font-semibold text-emerald-800">Admin session</span></header><main className="p-4 md:p-8">{children}</main></section>
+    <section className="min-w-0 flex-1"><header className="sticky top-0 z-10 flex items-center justify-between border-b bg-white/95 px-5 py-4 backdrop-blur md:px-8"><div><p className="text-xs text-slate-500">DevBhoomi / Operations</p><p className="text-sm font-semibold text-slate-800">{nav.find((item)=>item[1]===pathname)?.[0] ?? "Admin workspace"}</p></div><div className="text-right"><p className="text-sm font-semibold text-slate-800">Prakash Rawat</p><p className="text-xs text-slate-500">Founder · Admin session</p></div></header><main className="p-4 md:p-8">{children}</main></section>
   </div>;
 }
