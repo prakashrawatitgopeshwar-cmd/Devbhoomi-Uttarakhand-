@@ -35,6 +35,7 @@ export async function saveRecord(formData: FormData) {
       if (field.required && (value === null || value === "")) throw new Error(field.label + " is required.");
       record[field.name] = value;
     }
+    if (section === "team") record.created_by = user.id;
     const slugField = config.fields.find((field) => field.name === "slug");
     const nameValue = String(record.name ?? record.title ?? record.business_name ?? record.route_name ?? "");
     if (slugField && !record.slug && nameValue) record.slug = slugify(nameValue);
