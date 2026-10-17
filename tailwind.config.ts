@@ -1,2 +1,1 @@
-import type {Config} from "tailwindcss";
-const config:Config={content:["./src/**/*.{js,ts,jsx,tsx,mdx}"],theme:{extend:{}},plugins:[]};export default config;
+import type {Config} from "tailwindcss";const config:Config={content:["./src/**/*.{js,ts,jsx,tsx,mdx}"],theme:{extend:{colors:{mountain:"#173e35",saffron:"#d69a36"}}},plugins:[]};export default config;
